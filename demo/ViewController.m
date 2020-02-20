@@ -114,7 +114,7 @@
     data.name = @"Holy shit folder";
     OsTreeNode *node = [[OsTreeNode alloc] initWithValue:data];
     node.isFolder = YES;
-    [_tree insertOsTreeNode:node];
+    [_tree insertTreeNode:node];
 }
 
 - (void) addObject:(UIBarButtonItem *)sender {
@@ -122,7 +122,7 @@
     data.name = @"Holy shit object";
     OsTreeNode *node = [[OsTreeNode alloc] initWithValue:data];
     node.isFolder = NO;
-    [_tree insertOsTreeNode:node];
+    [_tree insertTreeNode:node];
 }
 
 - (void)didReceiveMemoryWarning {

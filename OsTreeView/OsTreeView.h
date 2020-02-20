@@ -40,8 +40,9 @@
 @property(nonatomic, strong) UIFont *font;
 @property(nonatomic, assign) BOOL showCheckBox;
 @property(nonatomic, strong) OsTreeNode *treeNode;
+@property(nonatomic, strong) OsTreeNode *selectedNode;
 @property(nonatomic, weak) id<OsTreeViewDelegate> treeViewDelegate;
 
 - (instancetype) initWithFrame:(CGRect)frame;
-- (void) insertOsTreeNode:(OsTreeNode *)treeNode;
+- (void) insertTreeNode:(OsTreeNode *)treeNode;
 @end

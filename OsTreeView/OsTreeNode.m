@@ -43,7 +43,17 @@
     return allElements;
 }
 
-- (void) insertOsTreeNode:(OsTreeNode *)treeNode {
+- (NSArray<OsTreeNode *> *) allParents {
+    NSMutableArray *results = [[NSMutableArray alloc] init];
+    OsTreeNode *parent = self.parent;
+    if (parent) {
+        [results addObject:parent];
+        [results addObjectsFromArray:[parent allParents]];
+    }
+    return results;
+}
+
+- (void) insertTreeNode:(OsTreeNode *)treeNode {
     OsTreeNode *parent = nil;
     NSUInteger index = NSNotFound;
     if (self.isFolder) {
@@ -71,16 +81,16 @@
 }
 
 - (void) moveToDestination:(OsTreeNode *)destination {
-    NSAssert([self containsOsTreeNode:destination]==NO, @"[self containsOsTreeNode:destination] something gent wrong!");
+    NSAssert([self containsTreeNode:destination]==NO, @"[self containsTreeNode:destination] something gent wrong!");
     if (self == destination || destination == nil) {
         return;
     }
     [self removeFromParent];
 
-    [destination insertOsTreeNode:self];
+    [destination insertTreeNode:self];
 }
 
-- (BOOL) containsOsTreeNode:(OsTreeNode *)treeNode {
+- (BOOL) containsTreeNode:(OsTreeNode *)treeNode {
     OsTreeNode *parent = treeNode.parent;
     if (parent == nil) {
         return NO;
@@ -88,7 +98,7 @@
     if (self == parent) {
         return YES;
     } else {
-        return [self containsOsTreeNode:parent];
+        return [self containsTreeNode:parent];
     }
 }
 

@@ -22,10 +22,11 @@
 @property(nonatomic, assign) BOOL checked;
 
 - (instancetype) initWithValue:(id)value;
-- (void) insertOsTreeNode:(OsTreeNode *)osTreeNode;
+- (void) insertTreeNode:(OsTreeNode *)osTreeNode;
 - (void) appendChild:(OsTreeNode *)newChild;
 - (void) removeFromParent;
 - (void) moveToDestination:(OsTreeNode *)destination;
-- (BOOL) containsOsTreeNode:(OsTreeNode *)treeNode;
+- (BOOL) containsTreeNode:(OsTreeNode *)treeNode;
 - (NSArray<OsTreeNode *> *) visibleNodes;
+- (NSArray<OsTreeNode *> *) allParents;
 @end

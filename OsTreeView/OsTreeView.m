@@ -27,7 +27,7 @@
     return self;
 }
 
-- (void) insertOsTreeNode:(OsTreeNode *)treeNode {
+- (void) insertTreeNode:(OsTreeNode *)treeNode {
     OsTreeNode *targetNode = nil;
 
     NSArray<OsTreeViewCell *> *cells = [self visibleCells];
@@ -43,7 +43,7 @@
         targetNode = [self treeNodeForTreeViewCell:cells[0]];
     }
     NSAssert(targetNode, @"targetNode == nil, something went wrong!");
-    [targetNode insertOsTreeNode:treeNode];
+    [targetNode insertTreeNode:treeNode];
 
     if ([_treeViewDelegate respondsToSelector:@selector(treeView:addTreeNode:)]) {
         [_treeViewDelegate treeView:self addTreeNode:treeNode];
@@ -59,6 +59,17 @@
     [self resetSelection:NO];
 }
 
+- (void) setSelectedNode:(OsTreeNode *)selectedNode {
+    _selectedNode = selectedNode;
+    if (_selectedNode) {
+        NSArray<OsTreeNode *> *allParents = [_selectedNode allParents];
+        for (OsTreeNode *object in allParents) {
+            object.expanded = YES;
+        }
+        [self resetSelection:YES];
+    }
+}
+
 - (void) resetSelection:(BOOL)delay {
     NSInteger row = NSNotFound;
     if ([_treeViewDelegate respondsToSelector:@selector(treeView:rowForTreeNode:)]) {
@@ -67,7 +78,7 @@
     if (row != NSNotFound) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
         dispatch_block_t run = ^ {
-            [self selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+            [self selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
         };
         if (delay) {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), run);
@@ -165,16 +176,19 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     OsTreeNode *treeNode = [self treeNodeForIndexPath:indexPath];
+    _selectedNode = treeNode;
     if ([_treeViewDelegate respondsToSelector:@selector(treeView:didSelectForTreeNode:)]) {
         [_treeViewDelegate treeView:self didSelectForTreeNode:treeNode];
     }
-    _selectedNode = treeNode;
 }
 
-- (NSIndexPath *) tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath {
+- (NSIndexPath *)                  tableView:(UITableView *)tableView
+    targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath
+                         toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
+{
     OsTreeNode *srcNode = [self treeNodeForIndexPath:sourceIndexPath];
     OsTreeNode *targetNode = [self treeNodeForIndexPath:proposedDestinationIndexPath];
-    if ([srcNode containsOsTreeNode:targetNode] || srcNode==targetNode) {
+    if ([srcNode containsTreeNode:targetNode] || srcNode==targetNode) {
         return sourceIndexPath;
     } else {
         // NSLog(@"Moving to target node \"%@\"", targetNode.title);
