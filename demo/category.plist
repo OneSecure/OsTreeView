@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Default Category</string>
+	<key>categories</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>Women</string>
+			<key>categories</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>New Arrivals</string>
+					<key>categories</key>
+					<string></string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Tops &amp; Blouses</string>
+					<key>categories</key>
+					<string></string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Pants &amp; Denim</string>
+					<key>categories</key>
+					<array/>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Dresses &amp; Skirts</string>
+					<key>categories</key>
+					<string></string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Men</string>
+			<key>categories</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>New Arrivals</string>
+					<key>categories</key>
+					<string></string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Shirts</string>
+					<key>categories</key>
+					<string></string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Tees, Knits and Polos</string>
+					<key>categories</key>
+					<string></string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Pants &amp; Denim</string>
+					<key>categories</key>
+					<string></string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Blazers</string>
+					<key>categories</key>
+					<string></string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Accessories</string>
+			<key>categories</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Eyewear</string>
+					<key>categories</key>
+					<string></string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Jewelry</string>
+					<key>categories</key>
+					<string></string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Shoes</string>
+					<key>categories</key>
+					<string></string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Bags &amp; Luggage</string>
+					<key>categories</key>
+					<string></string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Home &amp; Decor</string>
+			<key>categories</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Books &amp; Music</string>
+					<key>categories</key>
+					<string></string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Bed &amp; Bath</string>
+					<key>categories</key>
+					<string></string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Electronics</string>
+					<key>categories</key>
+					<string></string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Decorative Accents</string>
+					<key>categories</key>
+					<string></string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Sale</string>
+			<key>categories</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Women</string>
+					<key>categories</key>
+					<string></string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Men</string>
+					<key>categories</key>
+					<string></string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Accessories</string>
+					<key>categories</key>
+					<string></string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Home &amp; Decor</string>
+					<key>categories</key>
+					<string></string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>VIP</string>
+			<key>categories</key>
+			<array/>
+		</dict>
+	</array>
+</dict>
+</plist>
