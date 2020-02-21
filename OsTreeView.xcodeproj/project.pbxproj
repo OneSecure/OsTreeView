@@ -20,6 +20,12 @@
 		3A167F1123FC4C5C004F2106 /* open.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A167F0C23FC4C5C004F2106 /* open.png */; };
 		3A167F1223FC4C5C004F2106 /* check_box.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A167F0D23FC4C5C004F2106 /* check_box.png */; };
 		3A167F1323FC4C5C004F2106 /* uncheck_box.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A167F0E23FC4C5C004F2106 /* uncheck_box.png */; };
+		3A3AB0AB23FEBE1700E141B2 /* combobox_down_highlighed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A3AB0A723FEBE1700E141B2 /* combobox_down_highlighed@2x.png */; };
+		3A3AB0AC23FEBE1700E141B2 /* combobox_up_highlighed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A3AB0A823FEBE1700E141B2 /* combobox_up_highlighed@2x.png */; };
+		3A3AB0AD23FEBE1700E141B2 /* combobox_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A3AB0A923FEBE1700E141B2 /* combobox_down@2x.png */; };
+		3A3AB0AE23FEBE1700E141B2 /* combobox_up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A3AB0AA23FEBE1700E141B2 /* combobox_up@2x.png */; };
+		3A3AB0B523FF026C00E141B2 /* OsComboTreeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3AB0B323FF026C00E141B2 /* OsComboTreeView.m */; };
+		3A3AB0B623FF026C00E141B2 /* OsComboTreeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A3AB0B423FF026C00E141B2 /* OsComboTreeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +44,12 @@
 		3A167F0C23FC4C5C004F2106 /* open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = open.png; path = OsTreeView/Images/open.png; sourceTree = "<group>"; };
 		3A167F0D23FC4C5C004F2106 /* check_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = check_box.png; path = OsTreeView/Images/check_box.png; sourceTree = "<group>"; };
 		3A167F0E23FC4C5C004F2106 /* uncheck_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uncheck_box.png; path = OsTreeView/Images/uncheck_box.png; sourceTree = "<group>"; };
+		3A3AB0A723FEBE1700E141B2 /* combobox_down_highlighed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "combobox_down_highlighed@2x.png"; path = "OsTreeView/Images/combobox_down_highlighed@2x.png"; sourceTree = "<group>"; };
+		3A3AB0A823FEBE1700E141B2 /* combobox_up_highlighed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "combobox_up_highlighed@2x.png"; path = "OsTreeView/Images/combobox_up_highlighed@2x.png"; sourceTree = "<group>"; };
+		3A3AB0A923FEBE1700E141B2 /* combobox_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "combobox_down@2x.png"; path = "OsTreeView/Images/combobox_down@2x.png"; sourceTree = "<group>"; };
+		3A3AB0AA23FEBE1700E141B2 /* combobox_up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "combobox_up@2x.png"; path = "OsTreeView/Images/combobox_up@2x.png"; sourceTree = "<group>"; };
+		3A3AB0B323FF026C00E141B2 /* OsComboTreeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OsComboTreeView.m; sourceTree = "<group>"; };
+		3A3AB0B423FF026C00E141B2 /* OsComboTreeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OsComboTreeView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +91,8 @@
 				3A167EFD23FC4BAE004F2106 /* OsCheckButton.m */,
 				3A167EFE23FC4BAE004F2106 /* OsTreeView.m */,
 				3A167EF323FC4B13004F2106 /* OsTreeView.h */,
+				3A3AB0B423FF026C00E141B2 /* OsComboTreeView.h */,
+				3A3AB0B323FF026C00E141B2 /* OsComboTreeView.m */,
 				3A167EF423FC4B13004F2106 /* Info.plist */,
 			);
 			path = OsTreeView;
@@ -87,6 +101,10 @@
 		3A167F0923FC4C48004F2106 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				3A3AB0A723FEBE1700E141B2 /* combobox_down_highlighed@2x.png */,
+				3A3AB0A923FEBE1700E141B2 /* combobox_down@2x.png */,
+				3A3AB0A823FEBE1700E141B2 /* combobox_up_highlighed@2x.png */,
+				3A3AB0AA23FEBE1700E141B2 /* combobox_up@2x.png */,
 				3A167F0D23FC4C5C004F2106 /* check_box.png */,
 				3A167F0B23FC4C5C004F2106 /* close.png */,
 				3A167F0A23FC4C5C004F2106 /* object.png */,
@@ -104,6 +122,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A167EF523FC4B13004F2106 /* OsTreeView.h in Headers */,
+				3A3AB0B623FF026C00E141B2 /* OsComboTreeView.h in Headers */,
 				3A167F0323FC4BAE004F2106 /* OsCheckButton.h in Headers */,
 				3A167F0823FC4BAE004F2106 /* OsTreeNode.h in Headers */,
 				3A167F0223FC4BAE004F2106 /* OsTreeViewCell.h in Headers */,
@@ -169,7 +188,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A167F1023FC4C5C004F2106 /* close.png in Resources */,
+				3A3AB0AE23FEBE1700E141B2 /* combobox_up@2x.png in Resources */,
+				3A3AB0AD23FEBE1700E141B2 /* combobox_down@2x.png in Resources */,
 				3A167F1323FC4C5C004F2106 /* uncheck_box.png in Resources */,
+				3A3AB0AB23FEBE1700E141B2 /* combobox_down_highlighed@2x.png in Resources */,
+				3A3AB0AC23FEBE1700E141B2 /* combobox_up_highlighed@2x.png in Resources */,
 				3A167F0F23FC4C5C004F2106 /* object.png in Resources */,
 				3A167F1223FC4C5C004F2106 /* check_box.png in Resources */,
 				3A167F1123FC4C5C004F2106 /* open.png in Resources */,
@@ -184,6 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A167F0723FC4BAE004F2106 /* OsTreeViewCell.m in Sources */,
+				3A3AB0B523FF026C00E141B2 /* OsComboTreeView.m in Sources */,
 				3A167F0523FC4BAE004F2106 /* OsTreeView.m in Sources */,
 				3A167F0423FC4BAE004F2106 /* OsCheckButton.m in Sources */,
 				3A167F0623FC4BAE004F2106 /* OsTreeNode.m in Sources */,

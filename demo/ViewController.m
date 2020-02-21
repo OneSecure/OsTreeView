@@ -16,6 +16,7 @@
 @implementation ViewController {
     OsTreeView *_tree;
     OsTreeNode *_rootTreeNode;
+    OsComboTreeView *_comboTreeView;
 }
 
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -28,6 +29,10 @@
 #pragma mark - OsTreeViewDelegate
 - (NSInteger) numberOfRowsInTreeView:(OsTreeView *)treeView {
     return [_rootTreeNode visibleNodes].count;
+}
+
+- (CGFloat) treeView:(OsTreeView *)treeView heightForRow:(NSInteger)row {
+    return 34;
 }
 
 - (OsTreeNode *) treeView:(OsTreeView *)treeView treeNodeForRow:(NSInteger)row {
@@ -48,7 +53,7 @@
 - (void) treeView:(OsTreeView *)treeView addTreeNode:(OsTreeNode *)treeNode {
 }
 
-- (void) treeView:(OsTreeView *)treeView didSelectForTreeNode:(OsTreeNode *)treeNode {
+- (void) treeView:(OsTreeView *)treeView didSelectedTreeNode:(OsTreeNode *)treeNode {
     NSLog(@"Node %@ selected", treeNode.title);
 }
 
@@ -96,6 +101,17 @@
     UIBarButtonItem *addFolder = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"addfolder"] style:UIBarButtonItemStylePlain target:self action:@selector(addFolder:)];
     UIBarButtonItem *addObject = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"addobject"] style:UIBarButtonItemStylePlain target:self action:@selector(addObject:)];
     self.navigationItem.rightBarButtonItems = @[edit, addFolder, addObject];
+    
+    OsTreeNode *root = [NodeData createTree];
+    OsComboTreeView *comboTreeView = [[OsComboTreeView alloc] initWithFrame:CGRectZero];
+    comboTreeView.rootNode = root;
+    comboTreeView.selectedNode = root.children[0];
+    comboTreeView.editable = NO;
+    [comboTreeView setOnNodeSelected:^(OsTreeNode *selectedNode) {
+        NSLog(@"%@", selectedNode.title);
+    }];
+    [self.view addSubview:comboTreeView];
+    _comboTreeView =comboTreeView;
 }
 
 - (void) _treeBoarder {
@@ -135,7 +151,9 @@
     CGFloat top = 8;
     [super viewDidLayoutSubviews];
     CGSize size = self.view.frame.size;
-    _tree.frame = CGRectMake(left, top, size.width-left*2, size.height-top*2);
+    CGFloat comboHight = 40;
+    _comboTreeView.frame = CGRectMake(left, top, size.width-left*2, comboHight);
+    _tree.frame = CGRectMake(left, top+comboHight+top, size.width-left*2, size.height-top*2-(comboHight+top));
 }
 
 @end
