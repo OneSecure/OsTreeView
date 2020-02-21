@@ -14,7 +14,6 @@
 @end
 
 @implementation OsTreeView {
-    OsTreeNode *_selectedNode;
 }
 
 - (instancetype) initWithFrame:(CGRect)frame {
@@ -22,7 +21,9 @@
         self.delegate=self;
         self.dataSource=self;
         self.separatorStyle= UITableViewCellSeparatorStyleNone;
+        _textColor = [UIColor blackColor];
         _font = [UIFont systemFontOfSize:16];
+        _editable = YES;
     }
     return self;
 }
@@ -53,16 +54,34 @@
     [self resetSelection:NO];
 }
 
+- (void) setTextColor:(UIColor *)textColor {
+    _textColor = textColor;
+    [self reloadData];
+    [self resetSelection:NO];
+}
+
 - (void) setFont:(UIFont *)font {
     _font = font;
     [self reloadData];
     [self resetSelection:NO];
 }
 
+- (void) setEditing:(BOOL)editing {
+    [super setEditing:(_editable ? editing : NO)];
+}
+
+- (void) setEditing:(BOOL)editing animated:(BOOL)animated {
+    if (_editable) {
+        [super setEditing:editing animated:animated];
+    } else {
+        [super setEditing:NO animated:NO];
+    }
+}
+
 - (void) setSelectedNode:(OsTreeNode *)selectedNode {
     _selectedNode = selectedNode;
-    if (_selectedNode) {
-        NSArray<OsTreeNode *> *allParents = [_selectedNode allParents];
+    if (selectedNode) {
+        NSArray<OsTreeNode *> *allParents = [selectedNode allParents];
         for (OsTreeNode *object in allParents) {
             object.expanded = YES;
         }
@@ -78,7 +97,7 @@
     if (row != NSNotFound) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
         dispatch_block_t run = ^ {
-            [self selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+            [self selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
         };
         if (delay) {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), run);
@@ -102,6 +121,14 @@
     return count;
 }
 
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([_treeViewDelegate respondsToSelector:@selector(treeView:heightForRow:)]) {
+        return [_treeViewDelegate treeView:(OsTreeView *)tableView heightForRow:indexPath.row];
+    }
+    CGSize size = [@"ABCD" sizeWithAttributes: @{NSFontAttributeName:_font}];
+    return size.height*2;
+}
+
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
 
@@ -113,6 +140,7 @@
                                                     isFolder:treeNode.isFolder
                                                   isSelected:treeNode.checked];
     cell.titleLabel.text = treeNode.title;
+    cell.textLabel.textColor = _textColor;
     cell.titleLabel.font = _font;
     cell.showCheckBox = _showCheckBox;
     //cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -121,6 +149,9 @@
 }
 
 - (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (!_editable) {
+        return NO;
+    }
     OsTreeNode *treeNode = [self treeNodeForIndexPath:indexPath];
     if ([_treeViewDelegate respondsToSelector:@selector(treeView:canEditTreeNode:)]) {
         return [_treeViewDelegate treeView:self canEditTreeNode:treeNode];
@@ -177,8 +208,8 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     OsTreeNode *treeNode = [self treeNodeForIndexPath:indexPath];
     _selectedNode = treeNode;
-    if ([_treeViewDelegate respondsToSelector:@selector(treeView:didSelectForTreeNode:)]) {
-        [_treeViewDelegate treeView:self didSelectForTreeNode:treeNode];
+    if ([_treeViewDelegate respondsToSelector:@selector(treeView:didSelectedTreeNode:)]) {
+        [_treeViewDelegate treeView:self didSelectedTreeNode:treeNode];
     }
 }
 
