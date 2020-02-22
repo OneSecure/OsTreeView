@@ -27,6 +27,7 @@
 - (void) removeFromParent;
 - (void) moveToDestination:(OsTreeNode *)destination;
 - (BOOL) containsTreeNode:(OsTreeNode *)treeNode;
+- (OsTreeNode*) findNodeByValue:(id)value;
 - (NSArray<OsTreeNode *> *) visibleNodes;
 - (NSArray<OsTreeNode *> *) allParents;
 @end

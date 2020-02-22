@@ -102,6 +102,24 @@
     }
 }
 
+- (OsTreeNode*) findNodeByValue:(id)value {
+    if (value == nil) {
+        return nil;
+    }
+    if (value == self.value) {
+        return self;
+    } else {
+        OsTreeNode *result = nil;
+        for (OsTreeNode *object in self.children) {
+            result = [object findNodeByValue:value];
+            if (result) {
+                break;
+            }
+        }
+        return result;
+    }
+}
+
 - (NSUInteger) levelDepth {
     NSUInteger cnt = 0;
     if (_parent != nil) {
