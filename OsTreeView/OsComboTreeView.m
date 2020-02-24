@@ -11,14 +11,14 @@
 
 static const NSTimeInterval kAnimateInerval = 0.2;
 
-//========================== PassthroughView =============================================
+//========================== OsPassthroughView =============================================
 
-@interface PassthroughView : UIView
+@interface OsPassthroughView : UIView
 @property (nonatomic, copy) NSArray<UIView *> *passViews;
 @property(nonatomic, strong) void(^doPassthrough)(BOOL isPass);
 @end
 
-@implementation PassthroughView {
+@implementation OsPassthroughView {
     BOOL _testHits;
 }
 
@@ -59,9 +59,9 @@ static const NSTimeInterval kAnimateInerval = 0.2;
 @end
 
 
-//========================== ImageTextView ==========================================
+//========================== OsImageTextView ==========================================
 
-@interface ImageTextView : UIView
+@interface OsImageTextView : UIView
 @property(nonatomic, strong) NSString *text;
 @property(nonatomic, strong) UIImage *image;
 @property(nonatomic, strong) UIFont *font;
@@ -72,7 +72,7 @@ static const NSTimeInterval kAnimateInerval = 0.2;
 - (instancetype)initWithFrame:(CGRect)frame;
 @end
 
-@implementation ImageTextView {
+@implementation OsImageTextView {
     UILabel *_textLabel;
     UIImageView *_imageView;
 }
@@ -173,10 +173,10 @@ static const NSTimeInterval kAnimateInerval = 0.2;
 @end
 
 @implementation OsComboTreeView {
-    __weak ImageTextView *_textLabel;
+    __weak OsImageTextView *_textLabel;
     __weak UIImageView *_rightView;
     OsTreeView *_internalTreeView;
-    PassthroughView *_passthroughView;
+    OsPassthroughView *_passthroughView;
     BOOL _tableViewOnAbove;
     NSDate *_tapMoment;
     
@@ -300,7 +300,7 @@ static const NSTimeInterval kAnimateInerval = 0.2;
     self.layer.borderWidth = .5;
     _borderColor = [UIColor colorWithCGColor:self.layer.borderColor];
 
-    ImageTextView *textLabel = [[ImageTextView alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+    OsImageTextView *textLabel = [[OsImageTextView alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
     textLabel.textAlignment = NSTextAlignmentCenter;
     textLabel.backgroundColor = [UIColor clearColor];
     [self addSubview:textLabel];
@@ -413,7 +413,7 @@ static const NSTimeInterval kAnimateInerval = 0.2;
         if (_passthroughView == nil) {
             CGRect rc = [UIScreen mainScreen].bounds;
 
-            _passthroughView = [[PassthroughView alloc] initWithFrame:rc];
+            _passthroughView = [[OsPassthroughView alloc] initWithFrame:rc];
             _passthroughView.passViews = @[self, treeView, ];
 
             __weak typeof(self) weakSelf = self;

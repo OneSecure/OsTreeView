@@ -12,7 +12,7 @@
 }
 
 - (void) dealloc {
-    NSLog(@"OsTreeNode \"%@\" dealloc", self.title);
+    // NSLog(@"OsTreeNode \"%@\" dealloc", self.title);
 }
 
 - (instancetype) initWithValue:(id)value {
