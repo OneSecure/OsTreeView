@@ -357,6 +357,11 @@ static const NSTimeInterval kAnimateInerval = 0.2;
     return [super hitTest:point withEvent:event];
 }
 
+- (void) traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+    [super traitCollectionDidChange:previousTraitCollection];
+    [_internalTreeView reloadData];
+}
+
 #pragma mark - firstResponder
 - (void) tapHandle {
     UIView *topView = [OsComboTreeView topMostView:self];

@@ -129,6 +129,13 @@
     return size.height*2;
 }
 
+- (BOOL) isDarkMode {
+    if (@available(iOS 13.0, *)) {
+        return (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark);
+    }
+    return NO;
+}
+
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
 
@@ -144,6 +151,13 @@
     cell.titleLabel.font = _font;
     cell.showCheckBox = _showCheckBox;
     //cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    if (self.isDarkMode) {
+        cell.backgroundColor = [UIColor colorWithRed:.2 green:.2 blue:.2 alpha:1.];
+    } else {
+        cell.backgroundColor = [UIColor whiteColor];
+    }
+
     cell.delegate = self;
     return cell;
 }
